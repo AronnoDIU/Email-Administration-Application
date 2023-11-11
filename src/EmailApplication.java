@@ -2,28 +2,39 @@ import java.util.Scanner;
 
 public class EmailApplication {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
 
-        // Creating a new employee (i.e., an object of the Email class)
-        Email em1 = new Email("John", "Doe");
+        Email email = new Email("Yeasir", "Arafat");
 
-        int choice = -1;
+        int choice; // Initialize choice variable.
+
+        // This will be changed to 5 if the user wants to exit.
         do {
-            System.out.println("\n**************************\nENTER YOUR CHOICE\n1.Show Info\n2.Change Password"
-                    + "\n3.Change Mailbox Capacity\n4.Set Alternate Email\n5.Exit");
-            choice = s.nextInt();
-            switch(choice) {
+            System.out.println("""
+
+                    **************************
+                    ENTER YOUR CHOICE
+                    1.Show Info
+                    2.Change Password
+                    3.Change Mailbox Capacity
+                    4.Set Alternate Email
+                    5.Exit""");
+
+            choice = userInput.nextInt(); // Get user's choice
+
+            switch (choice) {
+
                 case 1:
-                    em1.getInfo();
+                    email.getInfo();
                     break;
                 case 2:
-                    em1.set_password();
+                    email.set_password();
                     break;
                 case 3:
-                    em1.set_mailCap();
+                    email.set_mailCap();
                     break;
                 case 4:
-                    em1.alternate_email();
+                    email.alternate_email();
                     break;
                 case 5:
                     System.out.println("\nTHANKS!!!");
@@ -32,6 +43,12 @@ public class EmailApplication {
                     System.out.println("INVALID CHOICE! ENTER AGAIN!");
             }
 
-        }while(choice!=5);
+        } while (choice != 5);
     }
 }
+
+/* Expected Output:
+
+
+
+ */

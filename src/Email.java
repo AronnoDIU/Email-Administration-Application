@@ -11,25 +11,22 @@ public class Email {
     private final String email;
     private String password;
     private int mailCapacity = 500;
-    private String alter_email;
+    private String alterEmail;
 
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("NEW EMPLOYEE: " + this.firstName + " " + this.lastName);
 
-        // Call a method asking for the department - return the department
-        this.department = this.setDepartment();
+        System.out.println("NEW EMPLOYEE CREATED SUCCESSFULLY ! \nYOUR NAME IS : " +
+                this.firstName + " " + this.lastName);
 
-        // Call a method that returns a random password
-        this.password = this.generate_password();
-
-        // Combine elements to generate an email
-        this.email = this.generate_email();
+        this.department = this.setDepartment(); // Ask for the department
+        this.password = this.generatePassword(); // Generate a random password
+        this.email = this.generateEmail(); // Generate an email
     }
 
     // Generating the email according to the given syntax
-    private String generate_email() {
+    private String generateEmail() {
         return this.firstName.toLowerCase() + "." + this.lastName.toLowerCase()
                 + "@" + this.department.toLowerCase() + ".company.com";
     }
@@ -45,34 +42,34 @@ public class Email {
 
         boolean flag = false; // To check if the user entered a valid choice
 
-        //noinspection LoopConditionNotUpdatedInsideLoop
         do {
-            System.out.print("Enter Department Code: ");
+            System.out.print("Enter Department Code for " + this.firstName + " : ");
             int choice = userInput.nextInt();
+
             switch (choice) {
                 case 1:
-                    return "Sales";
+                    return "Sales Department";
                 case 2:
-                    return "Development";
+                    return "Development Department";
                 case 3:
-                    return "Accounting";
+                    return "Accounting Department";
                 case 0:
-                    return "None";
+                    return "None of the Above";
                 default:
                     System.out.println("***INVALID CHOICE***");
             }
         } while (!flag);
-        return null;
+        return null; // Return null if the user entered an invalid choice
     }
 
     // Generating a random password
-    private String generate_password() {
+    private String generatePassword() {
         Random randomGenerate = new Random();
 
         String UpperCaseCharacter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String LowerCaseCharacter = "abcdefghijklmnopqrstuvwxyz";
         String NumericCharacters = "0123456789";
-        String SpecialCharacter = "!@#$%&?";
+        String SpecialCharacter = "!@#$%&?’*;:-.[]^-{}~`<=>/()_+";
 
         // Combining all the characters
         String CharacterValues = UpperCaseCharacter +
@@ -80,7 +77,7 @@ public class Email {
 
         StringBuilder password = new StringBuilder(); // To store the password
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 12; i++) {
 
             // Selecting a random character from the CharacterValues
             password.append(CharacterValues.charAt
@@ -90,7 +87,7 @@ public class Email {
     }
 
     // Change the password
-    public void set_password() {
+    public void setPassword() {
         boolean flag = false; // To check if the user entered a valid choice
 
         do {
@@ -102,51 +99,56 @@ public class Email {
             if (choice == 'Y' || choice == 'y') {
                 flag = true;
 
-                System.out.print("Enter current password: ");
-                String temp = userInput.next();
+                System.out.print("Enter current password for " + this.email + " : ");
+                String tempPassword = userInput.next(); // Store the current password
 
                 // Check if the password is correct
-                if (temp.equals(this.password)) {
-                    System.out.println("Enter new password: ");
+                if (tempPassword.equals(this.password)) {
+                    System.out.println("Enter a new password for " + this.email + " : ");
                     this.password = userInput.next();
-                    System.out.println("PASSWORD CHANGED SUCCESSFULLY!");
+                    System.out.println("PASSWORD HAS BEEN CHANGED TO " +
+                            this.password + " SUCCESSFULLY!");
                 } else {
-                    System.out.println("Incorrect Password!");
+                    System.out.println("Incorrect Password Entered! TRY AGAIN!");
                 }
             }
             // If the user does not want to change the password
             else if (choice == 'N' || choice == 'n') {
                 flag = true;
-                System.out.println("PASSWORD CHANGE CANCELED!");
+                System.out.println("PASSWORD CHANGE PROCESS HAS BEEN CANCELED!");
             } else {
-                System.out.println("***ENTER A VALID CHOICE***");
+                System.out.println("*** PLEASE ENTER A VALID CHOICE ***");
             }
         } while (!flag);
     }
 
     // Set the mailbox capacity
     public void setMailCapacity() {
-        System.out.println("Current capacity = " + this.mailCapacity + " Mega Bytes");
-        System.out.print("Enter new capacity: ");
-        this.mailCapacity = userInput.nextInt();
-        System.out.println("MAILBOX CAPACITY CHANGED SUCCESSFULLY!");
+        System.out.println("Current capacity of " + this.email + " = " +
+                this.mailCapacity + " Mega Bytes");
 
+        System.out.print("Enter new capacity for " + this.email + " : ");
+
+        this.mailCapacity = userInput.nextInt();
+
+        System.out.println("MAILBOX CAPACITY OF " + this.email
+                + " HAS BEEN CHANGED SUCCESSFULLY!");
     }
 
-    // Set the alternate email
+    // Set the alternate email address
     public void alternateEmail() {
-        System.out.print("Enter new alternate email: ");
-        this.alter_email = userInput.next();
-        System.out.println("ALTERNATE EMAIL SET SUCCESSFULLY!");
+        System.out.print("Enter a new Alternate Email for " + this.email + " : ");
+        this.alterEmail = userInput.next();
+        System.out.println("ALTERNATE EMAIL HAS BEEN SET SUCCESSFULLY!");
     }
 
     // Displaying the employee's information
     public void getInformation() {
-        System.out.println("NAME: " + this.firstName + " " + this.lastName);
-        System.out.println("DEPARTMENT: " + this.department);
-        System.out.println("EMAIL: " + this.email);
-        System.out.println("PASSWORD: " + this.password);
-        System.out.println("MAILBOX CAPACITY: " + this.mailCapacity + " Mega Bytes");
-        System.out.println("ALTER EMAIL: " + this.alter_email);
+        System.out.println("YOUR NAME IS : " + this.firstName + " " + this.lastName);
+        System.out.println("DEPARTMENT CODE : " + this.department);
+        System.out.println("EMAIL ADDRESS : " + this.email);
+        System.out.println("PASSWORD IS : " + this.password);
+        System.out.println("MAILBOX CAPACITY IS : " + this.mailCapacity + " Mega Bytes");
+        System.out.println("ALTERNATE EMAIL IS : " + this.alterEmail);
     }
 }

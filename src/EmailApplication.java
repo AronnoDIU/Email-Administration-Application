@@ -28,7 +28,7 @@ public class EmailApplication {
                     email.getInformation();
                     break;
                 case 2:
-                    email.set_password();
+                    email.setPassword();
                     break;
                 case 3:
                     email.setMailCapacity();
@@ -37,7 +37,7 @@ public class EmailApplication {
                     email.alternateEmail();
                     break;
                 case 5:
-                    System.out.println("\nTHANKS!!!");
+                    System.out.println("\nTHANKS FOR USING OUR APPLICATION!");
                     break;
                 default:
                     System.out.println("INVALID CHOICE! ENTER AGAIN!");

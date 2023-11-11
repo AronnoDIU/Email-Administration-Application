@@ -25,16 +25,16 @@ public class EmailApplication {
             switch (choice) {
 
                 case 1:
-                    email.getInfo();
+                    email.getInformation();
                     break;
                 case 2:
                     email.set_password();
                     break;
                 case 3:
-                    email.set_mailCap();
+                    email.setMailCapacity();
                     break;
                 case 4:
-                    email.alternate_email();
+                    email.alternateEmail();
                     break;
                 case 5:
                     System.out.println("\nTHANKS!!!");

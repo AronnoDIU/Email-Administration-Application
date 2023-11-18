@@ -4,6 +4,7 @@ public class EmailApplication {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
+        // Create an object of Email class.
         Email email = new Email("Yeasir", "Arafat");
 
         int choice; // Initialize choice variable.
@@ -24,26 +25,26 @@ public class EmailApplication {
 
             switch (choice) {
 
-                case 1:
+                case 1: // For Show Info
                     email.getInformation();
                     break;
-                case 2:
+                case 2: // For Change Password
                     email.setPassword();
                     break;
-                case 3:
+                case 3: // For Change Mailbox Capacity
                     email.setMailCapacity();
                     break;
-                case 4:
+                case 4: // For Set Alternate Email
                     email.alternateEmail();
                     break;
-                case 5:
+                case 5: // For Exit
                     System.out.println("\nTHANKS FOR USING OUR APPLICATION!");
                     break;
-                default:
+                default: // For Invalid Choice
                     System.out.println("INVALID CHOICE! ENTER AGAIN!");
             }
 
-        } while (choice != 5);
+        } while (choice != 5); // The Loop will continue until the user enters 5.
     }
 }
 
